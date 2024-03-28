@@ -100,6 +100,7 @@ if manager.latest_checkpoint:
 else:
     print('Initializing from scratch.')
 
+
 EPOCHS = 5
 for epoch in range(EPOCHS):
     for images, labels in train_ds:
