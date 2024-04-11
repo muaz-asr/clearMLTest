@@ -8,7 +8,9 @@ from clearml import Task
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Dense, Flatten, Conv2D
 
-task = Task.init(project_name='toy_example', task_name='tf_training_with_logging')
+task = Task.create(project_name='toy_example', task_name='tf_training_with_logging',
+                   repo="https://github.com/muaz-asr/clearMLTest.git", add_task_init_call=True, script="toy_example.py")
+
 # output_model = OutputModel(task=task, framework='tensorflow')
 
 # parser = argparse.ArgumentParser()
@@ -100,8 +102,7 @@ if manager.latest_checkpoint:
 else:
     print('Initializing from scratch.')
 
-
-EPOCHS = 5
+EPOCHS = 3
 for epoch in range(EPOCHS):
     for images, labels in train_ds:
         train_step(images, labels)
